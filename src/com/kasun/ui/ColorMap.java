@@ -10,9 +10,10 @@ import java.util.ArrayList;
  * Created by kasun on 7/16/17.
  */
 public class ColorMap {
+
     public static final double LOG2 = Math.log(2);
 
-    float redFrequency   = 0.16f;
+    float redFrequency   = 0.1f;
     float blueFrequency  = 0.13f;
     float greenFrequency = 0.01f;
 
@@ -93,5 +94,14 @@ public class ColorMap {
 
     public void setGreenChannelPhase(float greenChannelPhase) {
         this.greenChannelPhase = greenChannelPhase;
+    }
+
+    // Singleton
+    public static ColorMap instance = null;
+
+    public static ColorMap getInstance(){
+        if (instance == null) instance = new ColorMap();
+
+        return instance;
     }
 }

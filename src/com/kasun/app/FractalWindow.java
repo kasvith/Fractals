@@ -14,26 +14,20 @@ import java.awt.*;
  * Created by kasun on 7/15/17.
  */
 public class FractalWindow extends JFrame {
+    FractalViewport viewport;
 
     public FractalWindow(String title, int width, int height){
         setTitle(title);
         setSize(width,height);
+        viewport = new FractalViewport(800,800);
+        getContentPane().add(viewport, BorderLayout.LINE_START);
+
+        viewport.setFractal(new Julia(new Complex(-.4f, .6f), 1000));
+        setLocationRelativeTo(null);
     }
 
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        ColorMap colorMap = new ColorMap();
-        Manderbolt manderbolt = new Manderbolt(-2f, 2f, -2f, 2f, 1000);
-        Julia julia = new Julia(new Complex(-0.4f, 0.6f), 1000);
+    private void init(){
 
-        AbstractFractal abstractFractal = manderbolt;
-
-        for (int x = 0; x <= 800; x++){
-            for (int y = 0; y <= 800; y++){
-                Point.renderPoint(g, new Point(x, y), colorMap.getFractalColor(abstractFractal.getFractal(x, y)));
-            }
-        }
     }
 
 }
