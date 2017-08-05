@@ -1,0 +1,56 @@
+JFDML JFormDesigner: "6.0.1.0.112" Java: "1.8.0_112-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {seq {space :::p, par l {par l:l::p {comp label3::t:::x, comp label1::t:::x, comp label2::t:p:105:p}, comp label4::l:p:105:p}, space s:::p, par l:::p {comp textFieldImgMin::l:::x, comp textFieldImgMax::t:p:254:p, comp textFieldRealMin::l:::x, comp textFieldRealMax::l:::x}}, seq l {space :p:15:p, comp label5:::p::p}}, space ::7:x}}"
+			"$verticalGroup": "par l {seq t {space ::12:x, comp label5:::p::p, space u:::p, par b {comp label1::b:p:30:p, comp textFieldRealMin::b:p:30:p}, space :::p, par b {comp label2::b:p:30:p, comp textFieldRealMax::b:p:30:p}, space :::p, par b {comp label3::b:p:30:p, comp textFieldImgMin::b:p:30:p}, space :::p, par b {comp label4::b:p:30:p, comp textFieldImgMax::b:p:30:p}, space :::p}}"
+		} ) {
+			name: "panel1"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Real Min :"
+				"labelFor": new FormReference( "textFieldRealMin" )
+				"horizontalAlignment": 4
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Real Max :"
+				"labelFor": new FormReference( "textFieldRealMax" )
+				"horizontalAlignment": 4
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Imaginary Min :"
+				"labelFor": new FormReference( "textFieldImgMin" )
+				"horizontalAlignment": 4
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "Imaginary Max :"
+				"labelFor": new FormReference( "textFieldImgMax" )
+				"horizontalAlignment": 4
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldRealMin"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldRealMax"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldImgMin"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldImgMax"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Region of Interest"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 136 )
+			"size": new java.awt.Dimension( 390, 184 )
+		} )
+	}
+}

@@ -1,0 +1,34 @@
+JFDML JFormDesigner: "6.0.1.0.112" Java: "1.8.0_112-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :::p, par l {comp label1::l:p::p, seq l {par l {comp label3:::p::p, comp label2::t:p::p}, space u:::p, par l:::p {comp txtImaginary::::144:x, comp txtReal::::144:x}}}, space ::24:x}}"
+			"$verticalGroup": "par l {seq l {space :::p, comp label1:::p::p, space s:::p, par b {comp txtReal::b:p::p, comp label2::b:p::p}, space u:::p, par l {comp label3:::p::p, comp txtImaginary:::p::p}, space ::36:x}}"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Parameters for C :"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Real : "
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "txtReal"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Imaginary : "
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "txtImaginary"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 260, 140 )
+		} )
+	}
+}

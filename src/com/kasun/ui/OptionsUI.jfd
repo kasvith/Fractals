@@ -1,0 +1,51 @@
+JFDML JFormDesigner: "6.0.1.0.112" Java: "1.8.0_112-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {par t {seq t {space :::x, par t {comp label1:::p::p, comp label2:::p::p}, space s:::p, par l:::p {comp txtIterations::::182:x, comp cmbFractalType::::182:x}, space :::p, comp btnRender:::p:91:p}, seq l {space :::p, comp cardProperties:::p:386:p}}, space ::8:x}}"
+			"$verticalGroup": "par l {seq t {space :p:10:p, par l {par b {comp label1::b:p::p, comp cmbFractalType::b:p::p}, comp btnRender::l:p::p}, space :::p, par b {comp label2::b:p::p, comp txtIterations::b:p::p}, space s:::p, comp cardProperties:::p:473:p, space ::10:x}}"
+		} ) {
+			name: "container"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Fractal Type : "
+				"labelFor": new FormReference( "cmbFractalType" )
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "cmbFractalType"
+				"model": new javax.swing.DefaultComboBoxModel {
+					selectedItem: "Manderbolt"
+					addElement( "Manderbolt" )
+					addElement( "Julia" )
+				}
+				addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "cmbFractalTypeItemStateChanged", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Iterations : "
+				"labelFor": new FormReference( "txtIterations" )
+			} )
+			add( new FormComponent( "javax.swing.JFormattedTextField" ) {
+				name: "txtIterations"
+				"columns": 20
+				"text": "1000"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnRender"
+				"text": "Render"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnRenderActionPerformed", true ) )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.CardLayout ) {
+				"hgap": 10
+				"vgap": 10
+			} ) {
+				name: "cardProperties"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 575 )
+		} )
+	}
+}

@@ -1,9 +1,8 @@
 package com.kasun.ui;
 
+import com.kasun.events.FractalChangedListener;
+import com.kasun.events.FractalEvent;
 import com.kasun.fractal.AbstractFractal;
-import com.kasun.fractal.Julia;
-import com.kasun.fractal.Manderbolt;
-import com.kasun.math.Complex;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,12 +10,13 @@ import java.awt.*;
 /**
  * Created by kasun on 7/24/17.
  */
-public class FractalViewport extends JPanel {
-    AbstractFractal fractal = null;
+public class FractalViewport extends JPanel implements FractalChangedListener {
+    private AbstractFractal fractal = null;
 
     public FractalViewport(int width, int height){
         setPreferredSize(new Dimension(width, height));
         setSize(width, height);
+        setDoubleBuffered(true);
     }
 
     public AbstractFractal getFractal() {
@@ -25,7 +25,7 @@ public class FractalViewport extends JPanel {
 
     public void setFractal(AbstractFractal fractal) {
         this.fractal = fractal;
-        this.invalidate();
+        this.repaint();
     }
 
     @Override
@@ -41,4 +41,8 @@ public class FractalViewport extends JPanel {
     }
 
 
+    @Override
+    public void onFractalChange(FractalEvent e) {
+        setFractal(e.fractal);
+    }
 }
