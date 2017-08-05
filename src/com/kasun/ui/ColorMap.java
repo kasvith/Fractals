@@ -4,7 +4,6 @@ import com.kasun.fractal.FractalPointData;
 import com.kasun.math.Utils;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * Created by kasun on 7/16/17.
@@ -13,22 +12,13 @@ public class ColorMap {
 
     public static final double LOG2 = Math.log(2);
 
-    float redFrequency   = 0.1f;
+    float redFrequency = 0.16f;
     float blueFrequency  = 0.13f;
     float greenFrequency = 0.01f;
 
     float redChannelPhase = 6f;
     float blueChannelPhase = 2f;
     float greenChannelPhase = .1f;
-
-    public ColorMap(float redFrequency, float blueFrequency, float greenFrequency, float redChannelPhase, float blueChannelPhase, float greenChannelPhase) {
-        this.redFrequency = redFrequency;
-        this.blueFrequency = blueFrequency;
-        this.greenFrequency = greenFrequency;
-        this.redChannelPhase = redChannelPhase;
-        this.blueChannelPhase = blueChannelPhase;
-        this.greenChannelPhase = greenChannelPhase;
-    }
 
     public ColorMap(){
         // empty ctr
@@ -97,7 +87,7 @@ public class ColorMap {
     }
 
     // Singleton
-    public static ColorMap instance = null;
+    private static ColorMap instance = null;
 
     public static ColorMap getInstance(){
         if (instance == null) instance = new ColorMap();

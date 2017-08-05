@@ -13,4 +13,8 @@ public final class Utils {
 
         return value;
     }
+
+    public static boolean Between(double value, double min, double max) {
+        return value >= min && value <= max;
+    }
 }

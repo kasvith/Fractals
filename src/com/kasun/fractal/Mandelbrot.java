@@ -7,20 +7,20 @@ import com.sun.glass.ui.Size;
 /**
  * Created by kasun on 7/14/17.
  */
-public class Manderbolt extends AbstractFractal {
+public class Mandelbrot extends AbstractFractal {
     final Complex ZERO = new Complex(0,0);
 
-    public Manderbolt(float realMin, float realMax, float complexMin, float complexMax, int iterations) {
+    public Mandelbrot(double realMin, double realMax, double complexMin, double complexMax, int iterations) {
         super(realMin, realMax, complexMin, complexMax,new Size(800,800), iterations);
     }
 
-    private FractalPointData calculateManderbolt(Complex c) {
+    private FractalPointData calculateMandelbrot(Complex c) {
         return super.calculateFractal(ZERO, c);
     }
 
     @Override
     public FractalPointData getFractal(int x, int y) {
-        return calculateManderbolt(getFractalCoordinates(x,y));
+        return calculateMandelbrot(getFractalCoordinates(x, y));
     }
 
     public FractalPointData getFractal(Point point){

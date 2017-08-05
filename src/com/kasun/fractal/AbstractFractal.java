@@ -8,24 +8,24 @@ import com.sun.glass.ui.Size;
  * Created by kasun on 7/14/17.
  */
 public abstract class AbstractFractal {
-    private float realMin = -1.0f;
-    private float realMax = 1.0f;
-    private float imgMin = -1.0f;
-    private float imgMax = 1.0f;
-    private float planeWidth = 0f;
-    private float planeHeight = 0f;
+    private double realMin = -1.0f;
+    private double realMax = 1.0f;
+    private double imgMin = -1.0f;
+    private double imgMax = 1.0f;
+    private double planeWidth = 0f;
+    private double planeHeight = 0f;
     private int iterations = 1000;
     private Size canvasSize = new Size(800,800);
 
-    public AbstractFractal(float realMin, float realMax, float imgMin, float imgMax, Size canvasSize , int iterations) {
+    public AbstractFractal(double realMin, double realMax, double imgMin, double imgMax, Size canvasSize, int iterations) {
         setBounds(realMin, realMax, imgMin, imgMax);
         setIterations(iterations);
         setCanvasSize(canvasSize);
     }
 
-    public void setBounds(float realMin, float realMax, float imgMin, float imgMax){
-        float w = realMax - realMin;
-        float h = imgMax - imgMin;
+    public void setBounds(double realMin, double realMax, double imgMin, double imgMax) {
+        double w = realMax - realMin;
+        double h = imgMax - imgMin;
 
         if (w > h){
             realMax = realMin + h;
@@ -64,19 +64,19 @@ public abstract class AbstractFractal {
         return new FractalPointData(getIterations(), z.getAbsolute());
     }
 
-    public float getRealMin() {
+    public double getRealMin() {
         return realMin;
     }
 
-    public float getRealMax() {
+    public double getRealMax() {
         return realMax;
     }
 
-    public float getImgMin() {
+    public double getImgMin() {
         return imgMin;
     }
 
-    public float getImgMax() {
+    public double getImgMax() {
         return imgMax;
     }
 
@@ -89,8 +89,8 @@ public abstract class AbstractFractal {
     }
 
     public Complex getFractalCoordinates(int x, int y){
-        float xx = this.realMin + (float)x*planeWidth/canvasSize.width;
-        float yy = this.imgMax - (float)y*planeHeight/canvasSize.height;
+        double xx = this.realMin + (double) x * planeWidth / canvasSize.width;
+        double yy = this.imgMax - (double) y * planeHeight / canvasSize.height;
 
         return new Complex(xx, yy);
     }
@@ -101,7 +101,7 @@ public abstract class AbstractFractal {
 
     public abstract FractalPointData getFractal(int x, int y);
 
-    public static float NormalizeIteration(int iteration, final int MAX_ITERATION){
-        return ((float)iteration/(float)MAX_ITERATION);
+    public static double NormalizeIteration(int iteration, final int MAX_ITERATION) {
+        return ((double) iteration / (double) MAX_ITERATION);
     }
 }
