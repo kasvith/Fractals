@@ -2,13 +2,13 @@
 
 ## Builds
 
-Travis-CI : [![Build Status](https://travis-ci.org/kasvith/Fractals.svg?branch=master)](https://travis-ci.org/kasvith/Fractals)
+  - Travis-CI : [![Build Status](https://travis-ci.org/kasvith/Fractals.svg?branch=master)](https://travis-ci.org/kasvith/Fractals)
 
 ## Code quality
 
-Codacy : [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fbd8b9de9eeb4b058e73344221bda6ce)]
+  - Codacy : [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fbd8b9de9eeb4b058e73344221bda6ce)](https://www.codacy.com/app/alankasun/Fractals?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kasvith/Fractals&amp;utm_campaign=Badge_Grade)
 
-Better Code Hub : [![BCH compliance](https://bettercodehub.com/edge/badge/kasvith/Fractals?branch=master)](https://bettercodehub.com/)
+  - Better Code Hub : [![BCH compliance](https://bettercodehub.com/edge/badge/kasvith/Fractals?branch=master)](https://bettercodehub.com/)
 
 ## Compilation
 
