@@ -9,5 +9,5 @@ deploy:
     secure: C82oJnLuVq9/9hhZv8ltFRwYyJ44Z6ENhvejC8Rlk2sT3VME4N9bTjc0Kh+U86pjj1B18glDDtQRx7iRx/RukbETMqDax+ysnPKyaLy/+ih9tt5GdyrLaxIlud5t6sh7e57BEOapfbA/+EXS6qKTV7wDl+N54k7Vd+jt/985pPrCUCIOTTS0pRrXOG5ceMvfXu6b8KK7zY2+eLgymrvsvDN68OZnJup+0qxDVhoWSZVui55bBpNFoXQqjmPruDEV2EPQejpZfHS8SBUd5EaW+X9jFT8ZzbFAM33Yq1EgmG2sCa1ZvjCvO9GZgDeXMUdpHfo1qmgFYd+jXbFuXh1lyIw0oWQIdR5tODuk16I+ERRAjo09F9313LoX9TW3AVwL/1pHo4KpYoiejrGElB71cw3HeHEZAAi+mT+dct5w9idFft1n1hB4WuX6miDL3EohpQRHiK0xJlbbSJwa7r60dWkmoBKLHh8DDXOjS8BAHHAVKNk/zkFnUsp5oH1XIxBJ3l/Jq+KtQsJ7ntQSs34lBYFCYloeYKr9sM60V9NWa4gagQ+QYXt3bbfQUS+5kI0gossZJftyvRs9Gaxdfm33XTn81fJjNcG3oqgL3fkG5DfWzhya6zS5nNDPuD4bUJhnDva5KyP2QfXwE6NUJBgc+21RaoSv8znKwnc1OfX5Rbc=
   file: /home/travis/build/kasvith/Fractals/build/jar/Fractals.jar
   on:
-    repo: kasvith/Fractals
+    tags: true
   skip_cleanup: true
