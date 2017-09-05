@@ -1,7 +1,7 @@
 <project default="compile">
     <target name="compile">
-        <mkdir dir="bin"/>
-        <javac srcdir="src" destdir="bin"/>
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes"/>
     </target>
 
     <target name="build-jar">
