@@ -3,6 +3,7 @@ jdk: oraclejdk8
 script:
 - ant compile
 - ant build-jar
+
 deploy:
   provider: releases
   api_key:
