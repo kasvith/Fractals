@@ -3,4 +3,13 @@
         <mkdir dir="bin"/>
         <javac srcdir="src" destdir="bin"/>
     </target>
+
+    <target name="build-jar">
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/Fractals.jar" basedir="build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="Fractal"/>
+            </manifest>
+        </jar>
+    </target>
 </project>
