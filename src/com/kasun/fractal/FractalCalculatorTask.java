@@ -35,15 +35,23 @@ public class FractalCalculatorTask implements Runnable {
      */
     @Override
     public void run() {
-        HashMap<Point, Color> map = cluster.getCluster();
+        if (!Thread.currentThread().isInterrupted()) {
+            HashMap<Point, Color> map = cluster.getCluster();
 
-        for (HashMap.Entry<Point, Color> entry : map.entrySet())
-        {
-            Color data = ColorMap.getInstance().getFractalColor(fractal.getFractal(entry.getKey()));
-            map.put(entry.getKey(), data);
+            for (HashMap.Entry<Point, Color> entry : map.entrySet()) {
+                if (Thread.interrupted()) {
+                    return;
+                }
+
+                Color data = ColorMap.getInstance().getFractalColor(fractal.getFractal(entry.getKey()));
+                map.put(entry.getKey(), data);
+            }
+
+            if (!Thread.interrupted()) {
+                cluster.setCluster(map);
+                callback.paintCluster(cluster);
+            }
         }
-        cluster.setCluster(map);
-
-        callback.paintCluster(cluster);
     }
+
 }

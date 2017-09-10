@@ -7,6 +7,9 @@ import com.kasun.fractal.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.nio.channels.ClosedByInterruptException;
+import java.nio.channels.InterruptibleChannel;
+import java.nio.channels.Selector;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.*;
@@ -20,7 +23,8 @@ public class FractalViewport extends JPanel implements FractalChangedListener, F
     int clusterSize;
     private ArrayList<FractalCluster> clusters = new ArrayList<>();
     BufferedImage image;
-
+    ExecutorService pool;
+    ArrayList<Future<?>> futures = new ArrayList<>();
 
     public FractalViewport(int width, int height){
         setPreferredSize(new Dimension(width, height));
@@ -37,6 +41,16 @@ public class FractalViewport extends JPanel implements FractalChangedListener, F
 
     public void setFractal(AbstractFractal fractal) {
         this.fractal = fractal;
+        if (pool != null)
+        {
+            pool.shutdownNow();
+
+            for (Future<?> future : futures)
+            {
+                future.cancel(true);
+            }
+
+        }
         this.setUpClusters();
     }
 
@@ -85,13 +99,14 @@ public class FractalViewport extends JPanel implements FractalChangedListener, F
             }
         }
 
-        ExecutorService pool = Executors.newCachedThreadPool();
+        pool = Executors.newCachedThreadPool();
 
         try{
             for (FractalCluster cluster : clusters)
             {
                 FractalCalculatorTask task = new FractalCalculatorTask(fractal, cluster, this);
-                pool.submit(task);
+
+                futures.add(pool.submit(task));
             }
         }catch (Exception e) {
             System.out.println(e.getMessage());
