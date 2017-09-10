@@ -3,7 +3,6 @@
         <mkdir dir="build/classes"/>
         <javac srcdir="src" destdir="build/classes"/>
     </target>
-
     <target name="build-jar">
         <mkdir dir="build/jar"/>
         <jar destfile="build/jar/Fractals.jar" basedir="build/classes">
