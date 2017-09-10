@@ -5,8 +5,6 @@ import com.kasun.ui.Point;
 
 import java.awt.*;
 import java.util.HashMap;
-import java.util.concurrent.Callable;
-import java.util.concurrent.RecursiveTask;
 
 /**
  * Created by kasun on 9/9/17.
