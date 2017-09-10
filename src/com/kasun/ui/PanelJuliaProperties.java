@@ -13,6 +13,13 @@ import javax.swing.*;
  * @author Kasun Vithanage
  */
 public class PanelJuliaProperties extends JPanel implements FractalProperties {
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - Kasun Vithanage
+    private JLabel label1;
+    private JLabel label2;
+    private JTextField txtReal;
+    private JLabel label3;
+    private JTextField txtImaginary;
     public PanelJuliaProperties() {
         initComponents();
     }
@@ -27,19 +34,6 @@ public class PanelJuliaProperties extends JPanel implements FractalProperties {
         txtImaginary = new JTextField();
 
         //======== this ========
-
-        // JFormDesigner evaluation mark
-        setBorder(new javax.swing.border.CompoundBorder(
-                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                        java.awt.Color.red), getBorder()));
-        addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent e) {
-                if ("border".equals(e.getPropertyName())) throw new RuntimeException();
-            }
-        });
-
 
         //---- label1 ----
         label1.setText("Parameters for C :");
@@ -85,14 +79,6 @@ public class PanelJuliaProperties extends JPanel implements FractalProperties {
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
-
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Kasun Vithanage
-    private JLabel label1;
-    private JLabel label2;
-    private JTextField txtReal;
-    private JLabel label3;
-    private JTextField txtImaginary;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     @Override
