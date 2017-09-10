@@ -2,21 +2,33 @@ package com.kasun.ui;
 
 import com.kasun.events.FractalChangedListener;
 import com.kasun.events.FractalEvent;
-import com.kasun.fractal.AbstractFractal;
+import com.kasun.fractal.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.*;
 
 /**
  * Created by kasun on 7/24/17.
  */
-public class FractalViewport extends JPanel implements FractalChangedListener {
+public class FractalViewport extends JPanel implements FractalChangedListener, FractalClusterCallback {
+    private static int NUMBER_OF_CLUSTERS = 100;
     private AbstractFractal fractal = null;
+    int clusterSize;
+    private ArrayList<FractalCluster> clusters = new ArrayList<>();
+    BufferedImage image;
+
 
     public FractalViewport(int width, int height){
         setPreferredSize(new Dimension(width, height));
         setSize(width, height);
         setDoubleBuffered(true);
+        clusterSize = getHeight()/NUMBER_OF_CLUSTERS;
+
+        image = new BufferedImage(getWidth(), getHeight(), BufferedImage.SCALE_SMOOTH);
     }
 
     public AbstractFractal getFractal() {
@@ -25,24 +37,66 @@ public class FractalViewport extends JPanel implements FractalChangedListener {
 
     public void setFractal(AbstractFractal fractal) {
         this.fractal = fractal;
-        this.repaint();
+        this.setUpClusters();
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if (fractal != null){
-            for (int x = 0; x <= getWidth(); x++){
-                for (int y = 0; y <= getHeight(); y++){
-                    Point.renderPoint(g, new Point(x, y), ColorMap.getInstance().getFractalColor(fractal.getFractal(x, y)));
-                }
-            }
-        }
+        g.drawImage(image, 0, 0, null);
     }
 
+    public void paintCluster(FractalCluster cluster){
+        Graphics g = image.getGraphics();
+
+        for (HashMap.Entry<Point, Color> entry : cluster.getCluster().entrySet())
+        {
+            Point.renderPoint(g, entry.getKey(), entry.getValue());
+        }
+
+        this.repaint();
+        this.invalidate();
+    }
 
     @Override
     public void onFractalChange(FractalEvent e) {
         setFractal(e.fractal);
+    }
+
+    private void setUpClusters()
+    {
+        clusters = new ArrayList<>();
+
+        for (int i = 0; i < NUMBER_OF_CLUSTERS; i++)
+            clusters.add(new FractalCluster(Integer.toString(i)));
+
+        int currentClusterIndex = 0;
+        FractalCluster currentCluster = clusters.get(currentClusterIndex);
+        for (int y = 0; y <= getHeight(); y++)
+        {
+            if (y % clusterSize == 0 && currentClusterIndex < NUMBER_OF_CLUSTERS)
+            {
+                currentCluster = clusters.get(currentClusterIndex++);
+            }
+
+            for (int x = 0; x <= getWidth(); x++)
+            {
+                currentCluster.addPoint(x, y);
+            }
+        }
+
+        ExecutorService pool = Executors.newCachedThreadPool();
+
+        try{
+            for (FractalCluster cluster : clusters)
+            {
+                FractalCalculatorTask task = new FractalCalculatorTask(fractal, cluster, this);
+                pool.submit(task);
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }finally {
+            pool.shutdown();
+        }
     }
 }

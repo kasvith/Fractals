@@ -101,6 +101,11 @@ public abstract class AbstractFractal {
 
     public abstract FractalPointData getFractal(int x, int y);
 
+    public FractalPointData getFractal(Point point)
+    {
+        return getFractal(point.getX(), point.getY());
+    }
+
     public static double NormalizeIteration(int iteration, final int MAX_ITERATION) {
         return ((double) iteration / (double) MAX_ITERATION);
     }
