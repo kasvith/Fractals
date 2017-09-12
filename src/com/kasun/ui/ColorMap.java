@@ -11,17 +11,23 @@ import java.awt.*;
 public class ColorMap {
 
     public static final double LOG2 = Math.log(2);
-
+    // Singleton
+    private static ColorMap instance = null;
     float redFrequency = 0.16f;
     float blueFrequency  = 0.13f;
     float greenFrequency = 0.01f;
-
     float redChannelPhase = 6f;
     float blueChannelPhase = 2f;
-    float greenChannelPhase = .1f;
+    float greenChannelPhase = .05f;
 
     public ColorMap(){
         // empty ctr
+    }
+
+    public static ColorMap getInstance() {
+        if (instance == null) instance = new ColorMap();
+
+        return instance;
     }
 
     public Color getFractalColor(FractalPointData fractalPointData){
@@ -36,62 +42,5 @@ public class ColorMap {
         blue = Utils.Clamp(blue, 0 , 255);
 
         return new Color(red, green, blue);
-    }
-
-    public float getRedFrequency() {
-        return redFrequency;
-    }
-
-    public void setRedFrequency(float redFrequency) {
-        this.redFrequency = redFrequency;
-    }
-
-    public float getBlueFrequency() {
-        return blueFrequency;
-    }
-
-    public void setBlueFrequency(float blueFrequency) {
-        this.blueFrequency = blueFrequency;
-    }
-
-    public float getGreenFrequency() {
-        return greenFrequency;
-    }
-
-    public void setGreenFrequency(float greenFrequency) {
-        this.greenFrequency = greenFrequency;
-    }
-
-    public float getRedChannelPhase() {
-        return redChannelPhase;
-    }
-
-    public void setRedChannelPhase(float redChannelPhase) {
-        this.redChannelPhase = redChannelPhase;
-    }
-
-    public float getBlueChannelPhase() {
-        return blueChannelPhase;
-    }
-
-    public void setBlueChannelPhase(float blueChannelPhase) {
-        this.blueChannelPhase = blueChannelPhase;
-    }
-
-    public float getGreenChannelPhase() {
-        return greenChannelPhase;
-    }
-
-    public void setGreenChannelPhase(float greenChannelPhase) {
-        this.greenChannelPhase = greenChannelPhase;
-    }
-
-    // Singleton
-    private static ColorMap instance = null;
-
-    public static ColorMap getInstance(){
-        if (instance == null) instance = new ColorMap();
-
-        return instance;
     }
 }
