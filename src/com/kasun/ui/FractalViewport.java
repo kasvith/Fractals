@@ -2,29 +2,31 @@ package com.kasun.ui;
 
 import com.kasun.events.FractalChangedListener;
 import com.kasun.events.FractalEvent;
-import com.kasun.fractal.*;
+import com.kasun.fractal.AbstractFractal;
+import com.kasun.fractal.FractalCalculatorTask;
+import com.kasun.fractal.FractalCluster;
+import com.kasun.fractal.FractalClusterCallback;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.nio.channels.ClosedByInterruptException;
-import java.nio.channels.InterruptibleChannel;
-import java.nio.channels.Selector;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * Created by kasun on 7/24/17.
  */
 public class FractalViewport extends JPanel implements FractalChangedListener, FractalClusterCallback {
     private static int NUMBER_OF_CLUSTERS = 100;
-    private AbstractFractal fractal = null;
     int clusterSize;
-    private ArrayList<FractalCluster> clusters = new ArrayList<>();
     BufferedImage image;
     ExecutorService pool;
     ArrayList<Future<?>> futures = new ArrayList<>();
+    private AbstractFractal fractal = null;
+    private ArrayList<FractalCluster> clusters = new ArrayList<>();
 
     public FractalViewport(int width, int height){
         setPreferredSize(new Dimension(width, height));
