@@ -2,7 +2,7 @@ package com.kasun.fractal;
 
 import com.kasun.math.Complex;
 import com.kasun.ui.Point;
-import com.sun.glass.ui.Size;
+import com.kasun.ui.Size;
 
 /**
  * Created by kasun on 7/14/17.
@@ -21,6 +21,10 @@ public abstract class AbstractFractal {
         setBounds(realMin, realMax, imgMin, imgMax);
         setIterations(iterations);
         setCanvasSize(canvasSize);
+    }
+
+    public static double NormalizeIteration(int iteration, final int MAX_ITERATION) {
+        return ((double) iteration / (double) MAX_ITERATION);
     }
 
     public void setBounds(double realMin, double realMax, double imgMin, double imgMax) {
@@ -104,9 +108,5 @@ public abstract class AbstractFractal {
     public FractalPointData getFractal(Point point)
     {
         return getFractal(point.getX(), point.getY());
-    }
-
-    public static double NormalizeIteration(int iteration, final int MAX_ITERATION) {
-        return ((double) iteration / (double) MAX_ITERATION);
     }
 }

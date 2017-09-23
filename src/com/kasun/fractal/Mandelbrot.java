@@ -2,7 +2,7 @@ package com.kasun.fractal;
 
 import com.kasun.math.Complex;
 import com.kasun.ui.Point;
-import com.sun.glass.ui.Size;
+import com.kasun.ui.Size;
 
 /**
  * Created by kasun on 7/14/17.
